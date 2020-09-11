@@ -25,9 +25,13 @@ export class LoginPage implements OnInit {
 
   async login() {
     await this.presentLoading("Autenticando usuario");
+    // let payload = {
+    //   access_key_id: this.user,
+    //   secret_access_key: this.password
+    // }
     let payload = {
-      "access_key_id": this.user,
-      "secret_access_key": this.password
+      access_key_id: "W94oWs1vkCE5RUQgfiQQ",
+      secret_access_key: "akMDrcgRgIAIbdFy9o4MdW7JUcri2iNAainrcNSD"
     }
     await this.communService.login(payload).then(resp => {
       console.log(resp)

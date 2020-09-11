@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>comparaRostro</ion-title>
+  <ion-toolbar color="secondary">
+    <ion-title>Campara tu rostro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+<ion-card class="card">
+
+  <ion-row>
+    <ion-col *ngIf="foto1">
+      <img [src]="foto1" alt="">
+      <div class="ion-text-center">
+        <ion-icon name="close" (click)="removePhoto(1)" class="removeIcon"></ion-icon>
+      </div>      
+    </ion-col>
+    <ion-col *ngIf="foto2">
+      <img [src]="foto2" alt="">
+      <div class="ion-text-center">
+        <ion-icon name="close" (click)="removePhoto(2)" class="removeIcon"></ion-icon>
+      </div>
+    </ion-col>
+    <ion-col *ngIf="!foto1 || !foto2">
+      <div class="ion-text-center" >
+        <ion-icon name="camera" class="cameraIcon" (click)="takePhoto()" ></ion-icon>
+    </div>
+    </ion-col>
+  </ion-row>
+    
+</ion-card>
+<ion-button (click)="comparar()" expand="block" fill="outline" *ngIf="foto1 && foto2">
+  Comparar
+</ion-button>
+
 
 </ion-content>
