@@ -1,0 +1,29 @@
+
+<ion-content color="secondary">
+  <div  class="ion-text-center image">
+    <img src="../../../../assets/img/rost.png" alt="">
+  </div>
+  
+  <div class="ion-text-center title">
+    <h2>Iniciar sesión</h2>
+  </div>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-icon slot="start" name="people" class="icon"></ion-icon>
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="user"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="key"class="icon"></ion-icon>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="text" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <ion-button (click)="login()" expand="block" fill="clear" shape="round">
+        Ingresar
+      </ion-button>
+    </ion-card-content>
+    
+  </ion-card>
+  <ion-icon slot="start" name="contact"></ion-icon>
+</ion-content>
