@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  user;
-  password;
+  access_key_id;
+  secret_access_key;
   loading;
 
   constructor(private communService: CommunService,
@@ -24,21 +24,17 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    await this.presentLoading("Autenticando usuario");
-    // let payload = {
-    //   access_key_id: this.user,
-    //   secret_access_key: this.password
-    // }
-    let payload = {
-      access_key_id: "W94oWs1vkCE5RUQgfiQQ",
-      secret_access_key: "akMDrcgRgIAIbdFy9o4MdW7JUcri2iNAainrcNSD"
+    await this.presentLoading("Iniciando sesión");
+    let body = {
+      "access_key_id": this.access_key_id, //"W94oWs1vkCE5RUQgfiQQ",
+      "secret_access_key": this.secret_access_key //"akMDrcgRgIAIbdFy9o4MdW7JUcri2iNAainrcNSD"
     }
-    await this.communService.login(payload).then(resp => {
+    await this.communService.login(body).then(resp => {
       console.log(resp)
       if(resp.status=="Success"){
         this.router.navigate(['/compara-rostro']);  
       }else{
-        this.mensajeToast('Error');
+        this.mensajeToast('Error desconocido');
       }
     })
     this.loading.dismiss();

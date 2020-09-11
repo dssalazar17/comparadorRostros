@@ -12,8 +12,8 @@ export class CommunService {
 
   constructor(private http: HttpClient) { }
 
-  async login(payload): Promise<any> {
-    console.log(payload)
+  async login(body): Promise<any> {
+    console.log(body)
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*'
@@ -21,17 +21,16 @@ export class CommunService {
       // 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, HEAD',
       // 'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
     })
-    //No lleva headers
     return await new Promise((resolve, reject) => {
-      this.http.post(this.url.login, payload, {headers}).subscribe(
+      this.http.post(this.url.login, body).subscribe(
         (data:any )=> {
           this.user = data;
           resolve(data);
         },
         err => {
           console.log(err)
-          resolve(-1)
           //reject(err);
+          resolve(-1)
         });
     });
   }
@@ -49,13 +48,16 @@ export class CommunService {
         },
         err => {
           console.log(err)
-          resolve(-1)
-          //reject(err);
+          reject(err);
         });
     });
   }
 
   getToken(){
     return this.user.jwt;
+  }
+
+  isAuth(){
+    return this.user?true:false;
   }
 }

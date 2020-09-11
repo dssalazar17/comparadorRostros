@@ -11,17 +11,21 @@
     <ion-card-content>
       <ion-item>
         <ion-icon slot="start" name="people" class="icon"></ion-icon>
-        <ion-label position="floating">Usuario</ion-label>
-        <ion-input type="text" [(ngModel)]="user"></ion-input>
+        <ion-label position="floating">Access Key ID</ion-label>
+        <ion-input type="text" [(ngModel)]="access_key_id"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon slot="start" name="key"class="icon"></ion-icon>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="text" [(ngModel)]="password"></ion-input>
+        <ion-label position="floating">Secret Access Key</ion-label>
+        <ion-input type="text" [(ngModel)]="secret_access_key"></ion-input>
       </ion-item>
-      <ion-button (click)="login()" expand="block" fill="clear" shape="round">
-        Ingresar
-      </ion-button>
+      <ion-row>
+        <ion-col size="6" offset="3">
+          <ion-button (click)="login()" expand="block" shape="round" class="btnLogin" color="tertiary" [disabled]="!access_key_id || !secret_access_key">
+            Ingresar
+          </ion-button>
+        </ion-col>
+      </ion-row>      
     </ion-card-content>
     
   </ion-card>
